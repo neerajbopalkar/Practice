@@ -29,8 +29,8 @@
 		</div>
 
 		<form name="myForm" ng-submit="ctrl.submitData()">
-			<input type="text" ng-model="ctrl.user.FirstName"/>
-			<input type="text" ng-model="ctrl.user.Email"/>
+			<input type="text" ng-model="ctrl.user.firstname"/>
+			<input type="text" ng-model="ctrl.user.email"/>
 			<input type ="submit" value="add user"></input>
 		</form>
 		
@@ -68,7 +68,7 @@
 
 			self.items = response.data;
 			console.log('response received');
-			console.log('Data: ', response.data);
+			console.log('Data: ', response.data[0]);
 
 			},
 
