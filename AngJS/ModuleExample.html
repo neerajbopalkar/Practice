@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="notesapp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>module learning</title>
+  
+
+ 
+</head>
+
+<body ng-controller = "MainCtrl">
+ <script src="angular-1.4.7/angular.js"></script>
+
+Hello {{1+1}} nd time Angular JS
+<script type="text/Javascript">
+//Second argument in [] is dependency modules
+angular.module('notesapp', [])
+.controller('MainCtrl', [function() {
+//controller specific code goes here
+console.log('MainCtrl is created');
+}]);
+</script>
+
+</body>
+
+</html>

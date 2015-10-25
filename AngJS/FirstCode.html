@@ -1,0 +1,90 @@
+<!-- File: chapter2/creating-controller.html -->
+<html ng-app="notesApp">
+<head><title>Hello AngularJS</title></head>
+<body ng-controller="MainCtrl as ctrl">
+
+<BR/>
+MODEL IS THE TRUTH
+<BR/>
+
+Hello {{1 + 1}}nd time AngularJS
+
+<br/>
+{{ctrl.helloMsg}} AngularJS
+<br/>
+{{ctrl.message}} AngularJS
+<br/>
+<button ng-click = "ctrl.changeMessage()">
+change message
+</button>
+
+<div ng-repeat="note in ctrl.NeerNotes">
+	<span class = "label"> {{note.label}} </span>
+	
+	<span class = "status" ng-bind = "note.done"></span>
+</div>
+<BR/>
+<input type = "text" ng-model = "ctrl.userName"/>
+You typed {{ctrl.userName}}
+
+<br/>
+<button ng-click = "ctrl.changeUserName()">
+change user name
+</button>
+<br/>
+<button ng-click = "ctrl.SubmitChanges()">
+Submit
+</button>
+
+<form ng-submit="ctrl.SubmitForm()">
+
+<fieldset>
+
+<legend>user credentials</legend>
+
+<input type ="text" ng-model ="ctrl.user.userName">
+<input type ="password" ng-model ="ctrl.user.password">
+<input type ="submit" value="Submit">
+</fieldset>
+
+</form>
+
+
+
+<script
+src="angular-1.4.7/angular.js">
+</script>
+<script type="text/javascript">
+angular.module('notesApp', [])
+.controller('MainCtrl', [function() {
+// Controller-specific code goes here
+console.log('MainCtrl has been created');
+this.helloMsg = "hi there..";
+var self = this;
+
+self.message = "hello....";
+self.changeMessage = function() {
+self.message =" goodbye ...";
+}
+
+self.NeerNotes = [
+{ id:1, label:'first note', done:false  },
+{ id:2, label:'second note', done:true  },
+{ id:3, label:'third note', done:false  }
+];
+
+self.userName = "Nothing";
+
+self.changeUserName = function() {
+self.userName = "controller updated username!";
+}
+self.SubmitChanges = function() {
+console.log('user clicked submit with: ', self.userName);
+}
+self.SubmitForm = function() {
+console.log('user clicked submit with: ', self.user);
+}
+}]);
+</script>
+</body>
+</html>

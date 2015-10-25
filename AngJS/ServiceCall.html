@@ -1,0 +1,93 @@
+<!-- File: chapter2/creating-controller.html -->
+<html ng-app="notesApp">
+	<head>
+		<title>Calling HTTP service</title>
+		<style>
+			.item
+			{
+			padding: 10px;
+			}
+
+		</style>
+	</head>
+	<body ng-controller="MainCtrl as ctrl">
+
+		<BR/>
+		MODEL IS THE TRUTH
+		<BR/>
+
+		<h1>hello services {{1+1}}</h1>
+
+		<div ng-repeat="user in ctrl.items" >
+			<div>
+				<span ng-bind="user.firstname"></span>
+			</div>
+			<div>
+				- by <span ng-bind="user.email"></span>
+			</div>
+
+		</div>
+
+		<form name="myForm" ng-submit="ctrl.submitData()">
+			<input type="text" ng-model="ctrl.user.FirstName"/>
+			<input type="text" ng-model="ctrl.user.Email"/>
+			<input type ="submit" value="add user"></input>
+		</form>
+		
+		<script
+		src="angular-1.4.7/angular.js">
+		</script>
+		<script type="text/javascript">
+			angular.module('notesApp', [])
+			.controller('MainCtrl', ['$http', function($httpObj) {
+			// Controller-specific code goes here
+			console.log('MainCtrl has been created');
+
+			var self = this;
+
+			self.list = [
+			{id: 1, label: 'Item 0'},
+			{id: 2, label: 'Item 1'}
+			];
+
+			/*self.items = [
+			{FirstName: 'First Note', Email: "1@abc.com"},
+			{FirstName: 'Second Note', Email: "2@abc.com"},
+			{FirstName: 'Done Note', Email: "3@abc.com"},
+			{FirstName: 'Last Note', Email: "4@abc.com"}
+			];*/
+
+			self.items = [];
+
+			$httpObj
+			.get('http://localhost:8889/UserService/users')
+			.then
+			(
+			function(response)
+			{
+
+			self.items = response.data;
+			console.log('response received');
+			console.log('Data: ', response.data);
+
+			},
+
+			function(errResponse)
+			{
+			console.error('Error while fetching notes', errResponse);
+
+			});
+
+			self.user = {};
+			// Inside my controller code
+			self.submitData = function() {
+			console.log(self.user);
+			// Make Server POST request with JSON object
+			$httpObj.post('http://localhost:8889/UserService/users', self.user);
+			};
+			console.log(self.user);
+
+			}]);
+		</script>
+	</body>
+</html>
