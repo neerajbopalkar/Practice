@@ -7,6 +7,17 @@ import { IProduct } from "./product";
     styleUrls: ['./product-list.component.css']
 })
 export class productListComponent implements OnInit {
+    performFilter(filterBy: string): IProduct[] {
+        filterBy = filterBy.toLocaleLowerCase();
+
+        //Similar to LINQ and lambda expressions in C#
+        return this.products.filter((product: IProduct) =>
+        product.productName.toLocaleLowerCase().indexOf(filterBy)!=-1);
+    }
+    constructor(){
+        this.filteredProducts = this.products;
+        this.listFilter = 'cart';
+    }
     ngOnInit(): void {
         console.log('in onInit');
     }
@@ -41,15 +52,13 @@ export class productListComponent implements OnInit {
     imageMargin = 2;
     _listFilter: string;
 
-    //Same as C# properties
-    get listFilter(): string{
+    get listFilter(): string {
         return this._listFilter;
-    }
-    set listFilter(value: string){
+      }
+      set listFilter(value: string) {
         this._listFilter = value;
-        //Conditional operater
-        //this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products; 
-    }
+        this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+      }
 
     toggleImage(): void{
         this.showImage = !this.showImage;
