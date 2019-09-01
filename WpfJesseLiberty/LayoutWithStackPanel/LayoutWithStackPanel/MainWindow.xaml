@@ -1,0 +1,27 @@
+﻿<Window x:Class="LayoutWithStackPanel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>            
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <!--MARGIN 5 WILL APPLY FOR ALL 4 i.e. top bottom left right-->
+            <TextBlock Text="Your Name" Margin="5" />
+            <TextBox Width="80" Height="Auto" Margin="5" />
+        </StackPanel>
+        <!--STACK PANEL IS GOOD TO SHOW INPUT AS ABOVE, BELOW CAUSES LAYOUT PROBLEMS-->
+        <!--<TextBlock Text="Your Name" Background="AliceBlue" Margin="5" Grid.Row="1"/>
+        <TextBox Width="80" Height="Auto" Margin="5" Grid.Row="1" Background="Aqua"/>-->
+
+    </Grid>
+</Window>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="DataBindingTwoWay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StackPanel Name="Display">
+            
+            <!--changing values in textboxes will reflect in bottom textblocks after
+            hitting tab-->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Name: "/>
+                <TextBox Margin="5,0,0,0" Text="{Binding Name, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Title: "/>
+                <TextBox Margin="5,0,0,0" Text="{Binding Title,Mode=TwoWay}"/>
+            </StackPanel>           
+            
+            <!--Commented to demo two way binding-->
+            <!--<Button  Name="btnChange" Click="btnChange_Click_1" 
+                     Content="Change"
+                    />-->
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Name: "/>
+                <TextBlock Margin="5,0,0,0" Text="{Binding Name}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Title: "/>
+                <TextBlock Margin="5,0,0,0" Text="{Binding Title}"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>

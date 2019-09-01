@@ -1,0 +1,18 @@
+<div>
+<h2>{{user.name}}</h2>
+<img ng-src="{{user.avatar_url}}" title="{{user.name}}">
+</div>
+<table>
+<thead>
+<tr>
+	<th>name</th>
+	<th>language</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="repo in repos">
+<td>{{repo.name}} </td>
+<td>{{repo.language}} </td>
+</tr>
+</tbody>
+</table>

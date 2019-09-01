@@ -1,0 +1,33 @@
+1) install npm from website
+2) install mongo db from website
+3) install bower globally
+npm install -g bower
+THE LIST OF GLOBAL INSTALLED PACKAGES CAN BE SEEN USING COMMAND: npm list -g
+THE LIST OF LOCAL INSTALLED PACKAGES CAN BE SEEN USING COMMAND: npm list
+4) install grunt globally
+npm install -g grunt-cli
+5) install yo man for scaffolding
+npm install -g yo
+6) intall meanjs generator using YO. Al yoman generators begin with "generator-" 
+npm install -g generator-meanjs
+7) generate meanjs code using yoman
+yo meanjs
+
+Got error: https://stackoverflow.com/questions/35725647/getting-error-while-running-yeoman-generator
+Install MSI for Git to successfully use yo command for generating meanjs
+8) Run command
+mangod 
+
+Got error
+Refer: https://stackoverflow.com/questions/15053893/error-when-trying-to-connect-to-a-mongod
+create folder C:\data\db
+https://stackoverflow.com/questions/7948789/mongodb-mongod-complains-that-there-is-no-data-db-folder
+9) Use below command to start site
+grunt --force
+
+Other info:
+1) MEAN JS Repo: https://github.com/meanjs/mean
+2) All Yoman generators:
+http://yeoman.io/generators/
+
+C:\Users\PrincessViyona\AppData\Roaming\npm

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app='githubViewer'>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="script.js"></script>
+
+</head>
+
+<body ng-controller="MainController">
+  <h1>{{message}}</h1>
+  <h1>use firefox to render userdetails.html and avoid error in chrome and IE</h1>
+<div>
+  {{error}}
+</div>
+  <form name="searchUser" ng-submit="search(username)">
+    <input type="search" required placeholder="username to find" ng-model="username"/>
+    <input type="submit" value="Search!">
+  </form>
+
+  <div ng-include="'userdetails.html'" ng-show="user"></div>
+</body>
+
+</html>

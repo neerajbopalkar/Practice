@@ -1,0 +1,12 @@
+﻿<Window x:Class="TabControlDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Tab 1">This is tab 1....</TabItem>
+            <TabItem Header="Tab 2"/>
+            <TabItem Header="Tab 3"/>
+        </TabControl>
+    </Grid>
+</Window>

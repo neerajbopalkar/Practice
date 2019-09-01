@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="WpfApplication1.Views.ViewA"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	>
+
+    <Grid Margin="0,7,0,-7">
+        <TextBlock HorizontalAlignment="Left" Margin="46,63,0,0" TextWrapping="Wrap" Text="Updated TIme" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Left" Margin="172,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding LastUpdated}" Width="76"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="100,124,0,0" VerticalAlignment="Top" Width="75" Command="{Binding MyCommand}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="148,23,0,0" TextWrapping="Wrap" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</UserControl>
