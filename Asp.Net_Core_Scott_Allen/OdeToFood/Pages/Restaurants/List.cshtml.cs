@@ -15,7 +15,11 @@ namespace OdeToFood.Pages.Restaurants
         private readonly IConfiguration config;
         private readonly IRestaurantData restaurantData;
         public IEnumerable<Restaurant> Restaurants { get; set; }
+       
         public string NeerMessage { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
 
         public ListModel(IConfiguration config,
             IRestaurantData restaurantData)
@@ -27,7 +31,10 @@ namespace OdeToFood.Pages.Restaurants
         {
             //NeerMessage = "Hello World!";
             NeerMessage = config["MessageFromConf"];
-            Restaurants = restaurantData.GetAll();
+            //Getting name from user on view          // can use - 
+            //HttpContext.Request.QueryString
+            //Restaurants = restaurantData.GetAll();
+            Restaurants = restaurantData.GetRestaurantByName(SearchTerm);
         }
     }
 }
