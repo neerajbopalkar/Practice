@@ -11,6 +11,8 @@ namespace OdeToFood.Data
         IEnumerable<Restaurant> GetAll();
 
         IEnumerable<Restaurant> GetRestaurantByName(string name);
+
+        Restaurant GetById(int id);
     }
 
     public class InMemoryRestaurantData : IRestaurantData
@@ -48,6 +50,11 @@ namespace OdeToFood.Data
         {
            
             return restaurants.OrderBy(item => item.Name);
+        }
+
+        public Restaurant GetById(int id)
+        {
+            return restaurants.SingleOrDefault(r => r.ID == id);
         }
 
         public IEnumerable<Restaurant> GetRestaurantByName(string name)

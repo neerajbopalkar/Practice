@@ -1,0 +1,28 @@
+﻿@*to allow path using iD e.g. /restaurants/detail/19*@
+@page "{restaurantId:int}"
+@model OdeToFood.Pages.Restaurants.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>Restaurant Details</h2>
+
+
+@*below code will fail if restaurant is NULL i.e. not found.
+    Hence need to add return value on OnGet method*@
+<h2>@Model.Restaurant.Name</h2>
+
+<div>
+    ID: @Model.Restaurant.ID
+</div>
+<div>
+    Location: @Model.Restaurant.Location
+</div>
+
+<div>
+    Cuisine: @Model.Restaurant.Cuisine
+</div>
+
+@*Redirect user to listing page*@
+
+<a asp-page="./List" class="btn btn-default">All Restaurants</a>
