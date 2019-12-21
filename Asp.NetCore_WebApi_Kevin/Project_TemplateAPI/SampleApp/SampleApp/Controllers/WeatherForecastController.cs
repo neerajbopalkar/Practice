@@ -11,7 +11,7 @@ namespace SampleApp.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-     
+
 
         private readonly ILogger<WeatherForecastController> _logger;
 
@@ -21,17 +21,20 @@ namespace SampleApp.Controllers
         }
 
         [HttpGet("api/weather")]
-        public IEnumerable<WeatherForecast> Get()
+        public IActionResult Get()
         {
-            
-            return WeatherDataStore.WeatherList.ToArray();
+
+            return new JsonResult(WeatherDataStore.WeatherList);
         }
 
         [HttpGet("api/weather/{summary}")]
-        public WeatherForecast Get(string summary)
+        public IActionResult Get(string summary)
         {
+            var ret = WeatherDataStore.WeatherList.FirstOrDefault(entry => entry.Summary.ToUpper() == summary.ToUpper());
+            if (ret == null)
+                return NotFound();
 
-            return WeatherDataStore.WeatherList.FirstOrDefault(entry => entry.Summary.ToUpper() == summary.ToUpper());
+            return new JsonResult(ret) ;
         }
     }
 
@@ -44,7 +47,7 @@ namespace SampleApp.Controllers
      {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-        static  WeatherDataStore()
+        static WeatherDataStore()
         {
 
             var rng = new Random();
