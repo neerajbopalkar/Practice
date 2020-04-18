@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using log4net.Core;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WebApiOn2._2.Controllers
 {
@@ -10,10 +12,17 @@ namespace WebApiOn2._2.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly ILogger<ValuesController> _logger;
+        public ValuesController(ILogger<ValuesController> logger)
+        {
+            _logger = logger;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            var Message = $"About page visited at {DateTime.UtcNow.ToLongTimeString()}";
+            _logger.LogInformation("Message displayed: {Message}", Message);
             return new string[] { "value1", "value2" };
         }
 
