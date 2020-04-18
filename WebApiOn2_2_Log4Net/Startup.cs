@@ -43,6 +43,8 @@ namespace WebApiOn2._2
 
             app.UseHttpsRedirection();
             loggerFactory.AddLog4Net(); // << Add this line
+            var logger = loggerFactory.CreateLogger<Program>();
+            Program.Logger = logger;
             app.UseMvc();
         }
     }
